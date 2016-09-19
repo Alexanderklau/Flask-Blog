@@ -1,7 +1,8 @@
-import os
+
 from app import create_app,db
 from flask import current_app
 import unittest
+
 
 class BasicsTestCase(unittest.TestCase):
     def setUp(self):
