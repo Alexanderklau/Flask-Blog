@@ -3,9 +3,8 @@ from wtforms import StringField, TextAreaField, BooleanField, SelectField,\
     SubmitField
 from wtforms.validators import Required, Length, Email, Regexp
 from wtforms import ValidationError
+from flask_pagedown.fields import PageDownField
 from ..models import Role, User
-from flask.ext.pagedown.fields import PageDownField
-
 
 
 class NameForm(Form):
@@ -50,6 +49,7 @@ class EditProfileAdminForm(Form):
                 User.query.filter_by(username=field.data).first():
             raise ValidationError('Username already in use.')
 
+
 class PostForm(Form):
-    body = PageDownField("What is on your mind", validators=[Required()])
+    body = PageDownField("What's on your mind?", validators=[Required()])
     submit = SubmitField('Submit')
