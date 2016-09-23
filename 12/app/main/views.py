@@ -5,7 +5,7 @@ from . import main
 from .forms import EditProfileForm, EditProfileAdminForm, PostForm
 from .. import db
 from ..models import Permission, Role, User, Post
-from ..decorators import admin_requied,permission_required
+from ..decorators import admin_required, permission_required
 
 
 @main.route('/', methods=['GET', 'POST'])
@@ -64,7 +64,7 @@ def edit_profile():
 
 @main.route('/edit-profile/<int:id>', methods=['GET', 'POST'])
 @login_required
-@admin_requied
+@admin_required
 def edit_profile_admin(id):
     user = User.query.get_or_404(id)
     form = EditProfileAdminForm(user=user)
